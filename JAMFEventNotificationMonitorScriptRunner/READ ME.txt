@@ -1,0 +1,15 @@
+Here are some directions for using it:
+
+It can be dropped into your JSS at /Library/JSS/Tomcat/webapps/ROOT/WEB-INF/lib/.  Once it's dropped in, restart your JSS and you should see the following line in your JSS log to indicate that it's loaded properly.
+
+2012-08-16 08:13:16,934 [INFO ] [InitializeServer         ] - JAMFEventNotificationMonitor loaded: com.jamfsoftware.jssmonitor.ScriptRunner
+
+Logs from the jar are written to:
+/Library/JSS/Logs/JAMFEventNotificationScriptRunner.log
+
+That's about it.  It assumes that you have a python script like the one below at the following path:
+/private/etc/scripts/JAMFEventNotificationHandler.py
+
+arg1 is the device type ("Computer", or "MobileDevice"), arg2 is the identifier (udid for mds, primary mac for comps), and arg3 is the event ("UpdateInventory", "ComputerCheckIn", "etc").  The sample script attached writes a file to /tmp/ and sends an email to notify you when an event takes place.
+
+Obviously, you'll want to put an actual Gmail account for the sender and an actual recipient in the python script.
